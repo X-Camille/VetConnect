@@ -79,7 +79,6 @@ public class FichaMedica {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Ingrese el tratamiento del paciente: ");
         tratamiento = scanner.nextLine();
-        scanner.close();
     }
 
     public void mostrarFichaMedica() {
