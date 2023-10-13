@@ -13,7 +13,7 @@ public class FichaMedica {
 
     public void crearFichaMedica() {
         agregarDatosUsuario(); // Métodos de la clase Propietario
-        agregarDatosAnimal(); // Métodos de la clase Animal
+        agregarDatosMascota(); // Métodos de la clase Animal
         deseaAgregarDiagnostico();
         deseaAgregarTratamiento();
         mostrarFichaMedica();
@@ -64,7 +64,7 @@ public class FichaMedica {
         propietario.agregarDatos();
     }
 
-    public void agregarDatosAnimal() {
+    public void agregarDatosMascota() {
         System.out.println("Ingrese los datos del paciente: ");
         // Métodos del objeto instanciado de la clase Animal
     }

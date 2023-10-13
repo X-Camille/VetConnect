@@ -4,9 +4,23 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
 public class Mascota {
-
+    // atributos de la clase de mascota
     private String NombreMascota;
+    private String EspecieMascota;
+    private String RazaMascota;
+    private LocalDate FechaNacMascota;
+    private String SexoMascota;
 
+    // constructor
+    public Mascota(String nombre, String especie, String raza, LocalDate fechaNac, String sexo) {
+        NombreMascota = nombre;
+        EspecieMascota = especie;
+        RazaMascota = raza;
+        FechaNacMascota = fechaNac;
+        SexoMascota = sexo;
+    }
+
+    // get y set de NombreMascota
     public String getNombreMascota() {
         return NombreMascota;
     }
@@ -15,8 +29,7 @@ public class Mascota {
         NombreMascota = Nombre;
     }
 
-    private String EspecieMascota;
-
+    // get y set de EspecieMascota
     public String getEspecieMascota() {
         return EspecieMascota;
     }
@@ -25,8 +38,7 @@ public class Mascota {
         EspecieMascota = Especie;
     }
 
-    private String RazaMascota;
-
+    //get y set de RazaMascota
     public String getRazaMascota() {
         return RazaMascota;
     }
@@ -35,8 +47,7 @@ public class Mascota {
         RazaMascota = Raza;
     }
 
-    private LocalDate FechaNacMascota;
-
+    //get y set de FechaNacMascota
     public LocalDate getFechaNacMascota() {
         return FechaNacMascota;
     }
@@ -45,8 +56,8 @@ public class Mascota {
         FechaNacMascota = Fecha;
     }
 
-    private String SexoMascota;
 
+    //get yset de SexoMascota
     public String getSexoMascota() {
         return SexoMascota;
     }
