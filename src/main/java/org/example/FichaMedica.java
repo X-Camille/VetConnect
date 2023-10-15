@@ -8,7 +8,7 @@ public class FichaMedica {
     private final Propietario propietario;
 
     public FichaMedica() {
-        propietario = new Propietario();
+        propietario = new Propietario(null,null);
     }
 
     public void crearFichaMedica() {
@@ -66,7 +66,7 @@ public class FichaMedica {
 
     public void agregarDatosMascota() {
         System.out.println("Ingrese los datos del paciente: ");
-        // Métodos del objeto instanciado de la clase Animal
+
     }
 
     public String agregarDiagnostico() {

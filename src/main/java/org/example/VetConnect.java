@@ -1,8 +1,14 @@
 package org.example;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class VetConnect {
+
+    public HashMap<String, List<Mascota>> propietarioMascotas = new HashMap<>();
+    public HashMap<String, String> rutNombre =new HashMap<>();
 
     private FichaMedica ficha_medica = new FichaMedica();
 
