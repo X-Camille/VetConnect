@@ -1,9 +1,22 @@
-package org.example;
+package model;
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.format.DateTimeFormatter;
 
 public class Mascota {
+    public Mascota(String nombre, String especie, String raza, LocalDate fechaNac, String sexo) {
+        NombreMascota = nombre;
+        EspecieMascota = especie;
+        RazaMascota = raza;
+        FechaNacMascota = fechaNac;
+        SexoMascota = sexo;
+    }
+    public Mascota(){
+
+    }
+
+    public static void main(String[] args) {
+
+    }
 
     private String NombreMascota;
 

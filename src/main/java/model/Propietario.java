@@ -1,4 +1,4 @@
-package org.example;
+package model;
 import java.util.*;
 public class Propietario {
     // Atributos

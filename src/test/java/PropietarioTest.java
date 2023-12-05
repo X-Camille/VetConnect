@@ -1,4 +1,4 @@
-import org.example.Propietario;
+import model.Propietario;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 

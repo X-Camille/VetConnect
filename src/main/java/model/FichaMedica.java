@@ -1,4 +1,4 @@
-package org.example;
+package model;
 
 import java.util.*;
 
@@ -7,8 +7,11 @@ public class FichaMedica {
     private String tratamiento = "";
     private final Propietario propietario;
 
+    private final Mascota mascota;
+
     public FichaMedica() {
         propietario = new Propietario();
+        mascota = new Mascota();
     }
 
     public void crearFichaMedica() {

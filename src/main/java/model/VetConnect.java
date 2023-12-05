@@ -1,15 +1,9 @@
-package org.example;
+package model;
 
 import java.util.Scanner;
 
 public class VetConnect {
-
     private FichaMedica ficha_medica = new FichaMedica();
-
-    public static void main(String[] args) {
-        VetConnect clinica = new VetConnect();
-        clinica.menuPrincipal();
-    }
 
     public void menuPrincipal() {
         Scanner scanner = new Scanner(System.in);
