@@ -13,6 +13,9 @@ public class Propietario {
         this.rut = rut;
     }
 
+    public Propietario() {
+
+    }
 
 
     // Métodos

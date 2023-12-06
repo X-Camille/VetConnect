@@ -25,7 +25,7 @@ public class GUIVetConnect extends JFrame implements ActionListener {
         panel.setBackground(Color.WHITE); // Establecer el fondo del panel como blanco
         getContentPane().setBackground(Color.WHITE);
         agregarComponentes(panel);
-        mostrarVentana(panel);
+        mostrarVentana();
     }
 
     private void configurarVentana() {
@@ -112,7 +112,7 @@ public class GUIVetConnect extends JFrame implements ActionListener {
         getContentPane().add(panel, BorderLayout.CENTER);
     }
 
-    private void mostrarVentana(JPanel panel) {
+    private void mostrarVentana() {
         setLocationRelativeTo(null);
         setVisible(true);
     }
@@ -120,10 +120,10 @@ public class GUIVetConnect extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == bFichasMedicas) {
             dispose();
-            //new GUIFichaMedica(this.clinica).mostrarInterfaz();
+            new GUIFichaMedica(clinica).mostrarInterfaz();
         } else if (e.getSource() == bBuscador) {
             dispose();
-            //new GUIBuscador(this.clinica);
+            new GUIBuscador(clinica);
         } else if (e.getSource() == bNotificaciones) {
             dispose();
             //new GUINotificaciones(this.clinica);
