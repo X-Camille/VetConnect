@@ -2,7 +2,6 @@ package org.example;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class VetConnect {
@@ -10,7 +9,7 @@ public class VetConnect {
     public HashMap<String, List<Mascota>> propietarioMascotas = new HashMap<>();
     public HashMap<String, String> rutNombre =new HashMap<>();
 
-    private FichaMedica ficha_medica = new FichaMedica();
+    private FichaMedica ficha_medica = new FichaMedica("123456789");
 
     public static void main(String[] args) {
         VetConnect clinica = new VetConnect();

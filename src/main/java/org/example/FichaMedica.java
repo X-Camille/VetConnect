@@ -1,13 +1,13 @@
 package org.example;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class FichaMedica {
     private String diagnostico = "";
     private String tratamiento = "";
     private final Propietario propietario;
 
-    public FichaMedica() {
+    public FichaMedica(String number) {
         propietario = new Propietario();
     }
 
@@ -19,13 +19,13 @@ public class FichaMedica {
         mostrarFichaMedica();
     }
 
-    public void deseaAgregarDiagnostico(){
+    public void deseaAgregarDiagnostico() {
         Scanner scanner = new Scanner(System.in);
         String opcion;
         do {
             System.out.print("¿Desea agregar un diagnóstico? 1. Sí - 2. No ");
             opcion = scanner.nextLine();
-        } while(!opcion.equalsIgnoreCase("1") && !opcion.equalsIgnoreCase("2"));
+        } while (!opcion.equalsIgnoreCase("1") && !opcion.equalsIgnoreCase("2"));
 
         switch (opcion) {
             case "1":
@@ -35,17 +35,18 @@ public class FichaMedica {
                 diagnostico = "No hay diagnóstico para este paciente.";
                 break;
             default:
-                System.out.println("Surgió un problema al generar el diagnóstico."); // Caso por default en caso de que hubiera algún error
+                System.out.println("Surgió un problema al generar el diagnóstico.");
+                // Caso por default en caso de que hubiera algún error
         }
     }
 
-    public void deseaAgregarTratamiento(){
+    public void deseaAgregarTratamiento() {
         Scanner scanner = new Scanner(System.in);
         String opcion;
         do {
             System.out.print("¿Desea agregar un tratamiento? 1. Sí - 2. No ");
             opcion = scanner.nextLine();
-        } while(!opcion.equalsIgnoreCase("1") && !opcion.equalsIgnoreCase("2"));
+        } while (!opcion.equalsIgnoreCase("1") && !opcion.equalsIgnoreCase("2"));
 
         switch (opcion) {
             case "1":
@@ -55,7 +56,8 @@ public class FichaMedica {
                 tratamiento = "No hay tratamiento para este paciente";
                 break;
             default:
-                System.out.println("Surgió un problema al generar el tratamiento."); // Caso por default en caso de que hubiera algún error
+                System.out.println("Surgió un problema al generar el tratamiento.");
+                // Caso por default en caso de que hubiera algún error
         }
     }
 
@@ -66,7 +68,7 @@ public class FichaMedica {
 
     public void agregarDatosMascota() {
         System.out.println("Ingrese los datos del paciente: ");
-
+        // Puedes completar esta parte según la lógica específica
     }
 
     public String agregarDiagnostico() {
@@ -75,15 +77,38 @@ public class FichaMedica {
         return scanner.nextLine();
     }
 
-    public void agregarTratamiento() {
+    public short agregarTratamiento() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Ingrese el tratamiento del paciente: ");
         tratamiento = scanner.nextLine();
+        return 0;
     }
 
-    public void mostrarFichaMedica() {
+    public short mostrarFichaMedica() {
         System.out.println("El rut del propietario es " + propietario.getRut());
         System.out.println(diagnostico);
         System.out.println(tratamiento);
+        return 0;
+    }
+
+    // Getters y Setters
+    public String getDiagnostico() {
+        return diagnostico;
+    }
+
+    public String getTratamiento() {
+        return tratamiento;
+    }
+
+    public void setDiagnostico(String diagnostico) {
+        this.diagnostico = diagnostico;
+    }
+
+    public void setTratamiento(String tratamiento) {
+        this.tratamiento = tratamiento;
+    }
+
+    public Propietario getPropietario() {
+        return propietario;
     }
 }
