@@ -8,7 +8,7 @@ public class Propietario {
     Object rutNombre;
 
     // constructor
-    public Propietario(String nombre, String rut) {
+    public Propietario() {
         this.nombre = nombre;
         this.rut = rut;
     }
@@ -26,7 +26,7 @@ public class Propietario {
             System.out.print("RUT: ");
             rut = ingresarRut();
         }while(!validarRut(rut));
-        Propietario propietario= new Propietario(nombre,rut);
+        Propietario propietario= new Propietario();
 
         return propietario;
     }

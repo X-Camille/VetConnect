@@ -8,7 +8,7 @@ public class FichaMedica {
     private final Propietario propietario;
 
     public FichaMedica() {
-        propietario = new Propietario(null,null);
+        propietario = new Propietario();
     }
 
     public void crearFichaMedica() {
