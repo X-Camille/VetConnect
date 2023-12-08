@@ -114,10 +114,10 @@ public class GUIFichaMedica extends JFrame implements ActionListener {
             new GUIMascota(clinica).mostrarInterfaz();
         } else if (e.getSource() == bEditarFicha) {
             dispose();
-            //new GUIBuscador(this.clinica);
+            new GUIEditar(clinica).mostrarInterfaz();
         } else if (e.getSource() == bEliminarFicha) {
             dispose();
-            //new GUINotificaciones(this.clinica);
+            new GUIEliminar(clinica).mostrarInterfaz();
         } else if (e.getSource() == bAtras){
             dispose();
             new GUIVetConnect(clinica).mostrarInterfaz();

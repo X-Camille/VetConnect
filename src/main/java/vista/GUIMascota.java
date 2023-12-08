@@ -1,15 +1,20 @@
 package vista;
 
 
+import controller.VetConnectController;
+import model.Mascota;
 import model.VetConnect;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 public class GUIMascota extends JFrame {
 
-    private final VetConnect clinica;;
+    private final VetConnect clinica;
+    private JTextField campoNombre;
     private JTextField campoEspecie;
     private JTextField campoRaza;
     private JTextField campoSexo;
@@ -18,10 +23,18 @@ public class GUIMascota extends JFrame {
     private JButton bAtras;
     private JButton bVolver;
     private JPanel panelPrincipal;
+    private VetConnectController controller;
 
     public GUIMascota(VetConnect clinica){
         this.clinica = clinica;
+        this.controller = new VetConnectController();
     }
+
+    public GUIMascota(VetConnect clinica, VetConnectController controller){
+        this.clinica = clinica;
+        this.controller = controller;
+    }
+
     public void mostrarInterfaz() {
         panelPrincipal = crearPanelPrincipal();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -31,20 +44,23 @@ public class GUIMascota extends JFrame {
         configurarDimensionesCampos();
         crearPanelesCampos(panelPrincipal);
         establecerBotones(panelPrincipal);
+        establecerCampos();
 
         bSiguiente.addActionListener(e -> {
-            obtenerDatosMascotas();
+            controller.validarEntradasMascotas(obtenerDatosMascotas());
             dispose();
-            new GUIPropietario(clinica).mostrarInterfaz();
+            new GUIPropietario(clinica, controller).mostrarInterfaz();
         });
 
         bAtras.addActionListener(e -> {
             dispose();
+            controller = null;
             new GUIFichaMedica(clinica).mostrarInterfaz();
         });
 
         bVolver.addActionListener(e -> {
             dispose();
+            controller = null;
             new GUIVetConnect(clinica).mostrarInterfaz();
         });
 
@@ -55,6 +71,8 @@ public class GUIMascota extends JFrame {
     }
 
     private void crearPanelesCampos(JPanel panelPrincipal) {
+        JPanel panelNombre = crearPanelCampo("Nombre:", campoNombre);
+        panelPrincipal.add(panelNombre);
         JPanel panelEspecie = crearPanelCampo("Especie:", campoEspecie);
         panelPrincipal.add(panelEspecie);
         JPanel panelRaza = crearPanelCampo("Raza:", campoRaza);
@@ -66,6 +84,7 @@ public class GUIMascota extends JFrame {
     }
 
     private void configurarDimensionesCampos() {
+        campoNombre = new JTextField(20);
         campoEspecie = new JTextField(20);
         campoRaza = new JTextField(20);
         campoSexo = new JTextField(20);
@@ -119,33 +138,25 @@ public class GUIMascota extends JFrame {
         return panelBotones;
     }
 
-    /*private void deshabilitarCampos() {
-        campoEspecie.setEnabled(false);
-        campoRaza.setEnabled(false);
-        campoSexo.setEnabled(false);
-        campoFechaNacimiento.setEnabled(false);
-    }
 
-    private void habilitarCampos() {
-        campoEspecie.setEnabled(true);
-        campoRaza.setEnabled(true);
-        campoSexo.setEnabled(true);
-        campoFechaNacimiento.setEnabled(true);
-    }*/
-
-    private void limpiarCampos() {
-        campoEspecie.setText("");
-        campoRaza.setText("");
-        campoSexo.setText("");
-        campoFechaNacimiento.setText("");
+    private void establecerCampos() {
+        Mascota mascota = controller.getMascota();
+        if(mascota != null){
+            campoNombre.setText(mascota.getNombreMascota());
+            campoEspecie.setText(mascota.getEspecieMascota());
+            campoRaza.setText(mascota.getRazaMascota());
+            campoSexo.setText(mascota.getSexoMascota());
+            campoFechaNacimiento.setText(mascota.getFechaNacMascota());
+        }
     }
 
     private String[] obtenerDatosMascotas() {
+        String nombreText = campoNombre.getText();
         String especieText = campoEspecie.getText();
         String razaText = campoRaza.getText();
         String sexoText = campoSexo.getText();
         String fechaNacimientoText = campoFechaNacimiento.getText();
-        return new String[]{especieText, razaText, sexoText, fechaNacimientoText};
+        return new String[]{nombreText, especieText, razaText, sexoText, fechaNacimientoText};
     }
 
 }

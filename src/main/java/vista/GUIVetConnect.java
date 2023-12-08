@@ -123,7 +123,7 @@ public class GUIVetConnect extends JFrame implements ActionListener {
             new GUIFichaMedica(clinica).mostrarInterfaz();
         } else if (e.getSource() == bBuscador) {
             dispose();
-            new GUIBuscador(clinica);
+            new GUIBuscador(clinica).mostrarInterfaz();
         } else if (e.getSource() == bNotificaciones) {
             dispose();
             //new GUINotificaciones(this.clinica);
