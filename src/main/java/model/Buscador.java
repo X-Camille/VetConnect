@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Buscador {
@@ -26,7 +27,7 @@ public class Buscador {
             boolean coincideRut = (!buscarPorRut || ficha.getPropietario().getRut().equals(rut));
             boolean coincideNombrePropietario = (!buscarPorNombrePropietario || ficha.getPropietario().getNombre().equalsIgnoreCase(nombrePropietario));
             boolean coincideNombreMascota = (!buscarPorNombreMascota || ficha.getMascota().getNombreMascota().equalsIgnoreCase(nombreMascota));
-            boolean coincideFecha = (!buscarPorFecha || ficha.getFecha().equalsIgnoreCase(fecha));
+            boolean coincideFecha = (!buscarPorFecha || ficha.getMascota().getFechaNacMascota().equals(LocalDate.parse(fecha)));
 
             if (coincideRut && coincideNombrePropietario && coincideNombreMascota && coincideFecha) {
                 fichasEncontradas.add(ficha);

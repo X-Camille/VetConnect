@@ -3,86 +3,49 @@ import java.time.LocalDate;
 import java.time.Period;
 
 public class Mascota {
-    public Mascota(String nombre, String especie, String raza, String sexo, String fechaNac) {
-        NombreMascota = nombre;
-        EspecieMascota = especie;
-        RazaMascota = raza;
-        SexoMascota = sexo;
-        FechaNacMascota = fechaNac;
+    private String nombreMascota;
+    private String especie;
+    private String raza;
+    private String sexo;
+    private LocalDate fechaNacMascota;
+
+    public Mascota(String nombre, String especie, String raza, String sexo, LocalDate fechaNac) {
+        this.nombreMascota = nombre;
+        this.especie = especie;
+        this.raza = raza;
+        this.sexo = sexo;
+        this.fechaNacMascota = fechaNac;
     }
-    public Mascota(){
-
-    }
-
-    public static void main(String[] args) {
-
-    }
-
-    private String NombreMascota;
-
     public String getNombreMascota() {
-        return NombreMascota;
+        return nombreMascota;
     }
-
     public void setNombreMascota(String Nombre) {
-        NombreMascota = Nombre;
+        nombreMascota = Nombre;
     }
-
-    private String EspecieMascota;
-
     public String getEspecieMascota() {
-        return EspecieMascota;
+        return especie;
     }
-
     public void setEspecieMascota(String Especie) {
-        EspecieMascota = Especie;
+        especie = Especie;
     }
-
-    private String RazaMascota;
-
     public String getRazaMascota() {
-        return RazaMascota;
+        return raza;
     }
-
     public void setRazaMascota(String Raza) {
-        RazaMascota = Raza;
+        raza = Raza;
     }
-
-    private String FechaNacMascota;
-
-    public String getFechaNacMascota() {
-        return FechaNacMascota;
+    public LocalDate getFechaNacMascota() {
+        return fechaNacMascota;
     }
-
-
-
-    private String SexoMascota;
-
     public String getSexoMascota() {
-        return SexoMascota;
+        return sexo;
     }
-
     public void setSexoMascota(String sexoMascota) {
-        SexoMascota = sexoMascota;
+        sexo = sexoMascota;
     }
-
-/*
-    public String calcularEdad() {
-        LocalDate fechahoy = LocalDate.now();
-        Period periodo = Period.between(FechaNacMascota, fechahoy);
-        return (periodo.getYears() + " años y " + periodo.getMonths() + "meses.");
-    }*/
-
-    public void setDueno() {
-        System.out.println("Esto es un placeholder!!");
-        System.out.println("El dueño es otro objeto!!");
+    public void setFechaNacMascota(LocalDate fechaNacMascota) {
+        this.fechaNacMascota = fechaNacMascota;
     }
-
-    public void setFichaMedica(){
-        System.out.println("Esto es un placeholder!!");
-        System.out.println("La ficha es otro objeto!!!");
-    }
-
     public String toString(){
         return getNombreMascota() + "/" + getEspecieMascota() + "/" + getRazaMascota() + "/" + getSexoMascota() + "/" + getFechaNacMascota() + "/";
     }

@@ -1,6 +1,6 @@
 import static org.junit.Assert.*;
 
-import org.example.Mascota;
+import model.Mascota;
 import org.junit.Test;
 import java.time.LocalDate;
 
@@ -9,7 +9,7 @@ public class MascotaTest {
     @Test
     public void testGetEspecieMascota() {
         // Crear una mascota con una especie específica
-        Mascota mascota = new Mascota("Fido", "Perro", "Labrador", LocalDate.now(), "Macho");
+        Mascota mascota = new Mascota("Fido", "Perro", "Labrador", "Macho", LocalDate.now());
 
         // Verificar que la especie obtenida sea la esperada
         assertEquals("Perro", mascota.getEspecieMascota());
@@ -18,7 +18,7 @@ public class MascotaTest {
     @Test
     public void testSetEspecieMascota() {
         // Crear una mascota
-        Mascota mascota = new Mascota("Nombre", "EspecieAntigua", "Raza", LocalDate.now(), "Sexo");
+        Mascota mascota = new Mascota("Nombre", "EspecieAntigua", "Raza", "Sexo", LocalDate.now());
 
         // Cambiar la especie de la mascota
         mascota.setEspecieMascota("NuevaEspecie");
@@ -30,7 +30,7 @@ public class MascotaTest {
     @Test
     public void testGetRazaMascota() {
         // Crear una mascota con una raza específica
-        Mascota mascota = new Mascota("Fido", "Perro", "Labrador", LocalDate.now(), "Macho");
+        Mascota mascota = new Mascota("Fido", "Perro", "Labrador", "Macho", LocalDate.now());
 
         // Verificar que la raza obtenida sea la esperada
         assertEquals("Labrador", mascota.getRazaMascota());
@@ -39,7 +39,7 @@ public class MascotaTest {
     @Test
     public void testSetRazaMascota() {
         // Crear una mascota
-        Mascota mascota = new Mascota("Nombre", "Especie", "RazaAntigua", LocalDate.now(), "Sexo");
+        Mascota mascota = new Mascota("Nombre", "Especie", "RazaAntigua","Sexo", LocalDate.now());
 
         // Cambiar la raza de la mascota
         mascota.setRazaMascota("NuevaRaza");
@@ -52,7 +52,7 @@ public class MascotaTest {
     public void testGetFechaNacMascota() {
         // Crear una mascota con una fecha de nacimiento específica
         LocalDate fechaNacimiento = LocalDate.of(2020, 1, 1);
-        Mascota mascota = new Mascota("Fido", "Perro", "Labrador", fechaNacimiento, "Macho");
+        Mascota mascota = new Mascota("Fido", "Perro", "Labrador","Macho", fechaNacimiento);
 
         // Verificar que la fecha de nacimiento obtenida sea la esperada
         assertEquals(fechaNacimiento, mascota.getFechaNacMascota());
@@ -61,7 +61,7 @@ public class MascotaTest {
     @Test
     public void testSetFechaNacMascota() {
         // Crear una mascota
-        Mascota mascota = new Mascota("Nombre", "Especie", "Raza", LocalDate.now(), "Sexo");
+        Mascota mascota = new Mascota("Nombre", "Especie", "Raza", "Sexo", LocalDate.now());
 
         // Cambiar la fecha de nacimiento de la mascota
         LocalDate nuevaFechaNac = LocalDate.of(2021, 2, 2);
@@ -74,7 +74,7 @@ public class MascotaTest {
     @Test
     public void testGetSexoMascota() {
         // Crear una mascota con un sexo específico
-        Mascota mascota = new Mascota("Fido", "Perro", "Labrador", LocalDate.now(), "Macho");
+        Mascota mascota = new Mascota("Fido", "Perro", "Labrador", "Macho", LocalDate.now());
 
         // Verificar que el sexo obtenido sea el esperado
         assertEquals("Macho", mascota.getSexoMascota());
@@ -83,7 +83,7 @@ public class MascotaTest {
     @Test
     public void testSetSexoMascota() {
         // Crear una mascota
-        Mascota mascota = new Mascota("Nombre", "Especie", "Raza", LocalDate.now(), "SexoAntiguo");
+        Mascota mascota = new Mascota("Nombre", "Especie", "Raza", "SexoAntiguo", LocalDate.now());
 
         // Cambiar el sexo de la mascota
         mascota.setSexoMascota("NuevoSexo");

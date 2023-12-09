@@ -20,38 +20,29 @@ public class Propietario {
         this.direccion = direccion;
     }
 
-    public Propietario() {
+    public Propietario(){
 
     }
 
-
-    // Métodos
-    /*public Propietario agregarDatos(){
-        do {
-            System.out.print("Nombre: ");
-            nombre = ingresarNombre();
-        }while(validarNombre(nombre));
-
-        do{
-            System.out.print("RUT: ");
-            rut = ingresarRut();
-        }while(!validarRut(rut));
-        Propietario propietario= new Propietario(nombre,rut);
-
-        return propietario;
-    }*/
-
-    public String ingresarNombre(){
-        Scanner teclado = new Scanner(System.in);
-        return teclado.nextLine();
+    public String getNombre(){
+        return nombre;
+    }
+    public String getApellido(){
+        return apellido;
+    }
+    public String getRut(){
+        return rut;
+    }
+    public String getTelefono(){
+        return telefono;
+    }
+    public String getCorreo(){
+        return correo;
+    }
+    public String getDireccion(){
+        return direccion;
     }
 
-    public String ingresarRut(){
-        Scanner teclado = new Scanner(System.in);
-        return teclado.nextLine();
-    }
-
-    //xiao modifica
     public Boolean validarNombre(String nombre) {
         if (nombre.isEmpty()) {
             return true;  // Nombre vacío
@@ -68,8 +59,6 @@ public class Propietario {
     }
 
 
-
-    // xiao modifica validar rut
     public Boolean validarRut(String rut) {
         if (rut.isEmpty()) {
             return false; // Si la cadena rut está vacía, retorna false
@@ -105,28 +94,7 @@ public class Propietario {
         return true; // RUT válido
     }
 
-
-
-    public String getNombre(){
-        return nombre;
-    }
-    public String getApellido(){
-        return apellido;
-    }
-    public String getRut(){
-        return rut;
-    }
-    public String getTelefono(){
-        return telefono;
-    }
-    public String getCorreo(){
-        return correo;
-    }
-    public String getDireccion(){
-        return direccion;
-    }
     public String toString(){
         return getNombre() + "/" + getApellido() + "/" + getRut() + "/" + getTelefono() + "/" + getCorreo() + "/" + getDireccion() + "/";
     }
-
 }
