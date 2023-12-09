@@ -110,7 +110,8 @@ public class GUINotificacion extends JFrame implements ActionListener {
 
     private Notificacion CrearNotificacion(){
         try {
-            return new Notificacion(this.campoCabeza.getText(), this.campoCuerpo.getText(),this.campoFecha.getText());
+            return new Notificacion(this.campoCabeza.getText(),
+                    this.campoCuerpo.getText(),this.campoFecha.getText());
         } catch (IllegalArgumentException e) {
             return null;
         }
