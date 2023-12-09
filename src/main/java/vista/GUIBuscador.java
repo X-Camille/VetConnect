@@ -196,7 +196,7 @@ public class GUIBuscador extends JFrame implements ActionListener {
     }
 
     private void llenarTablaConDatos(ArrayList<FichaMedica> fichasMedicas) {
-        String[] columnas = {"RUT", "Nombre Propietario", "Nombre Mascota", "Fecha"};
+        String[] columnas = {"RUT", "Nombre Propietario", "Nombre Mascota", "Fecha Nacimiento"};
         Object[][] datos = new Object[fichasMedicas.size()][columnas.length];
 
         for (int i = 0; i < fichasMedicas.size(); i++) {
@@ -204,7 +204,7 @@ public class GUIBuscador extends JFrame implements ActionListener {
             datos[i][0] = ficha.getPropietario().getRut();
             datos[i][1] = ficha.getPropietario().getNombre();
             datos[i][2] = ficha.getMascota().getNombreMascota();
-            datos[i][3] = ficha.getFecha();
+            datos[i][3] = ficha.getMascota().getFechaNacMascota();
         }
         tableModel.setDataVector(datos, columnas);
     }

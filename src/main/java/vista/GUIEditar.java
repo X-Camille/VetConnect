@@ -17,16 +17,10 @@ public class GUIEditar extends JFrame implements ActionListener {
     private final VetConnect clinica;
     private DefaultTableModel tableModel;
     private JTable table;
-    private JTextField campoRut; // Campo para el RUT
-    private JTextField campoNombrePropietario;
-    private JTextField campoNombreMascota;
-    private JTextField campoFecha;
+    private JTextField campoRut, campoNombrePropietario, campoNombreMascota, campoFecha;
     private JButton bRut, bPropietario, bMascota, bFecha;
     private JPanel panelPrincipal;
-    private JButton bBuscar;
-    private JButton bEditar;
-    private JButton bAtras;
-    private JButton bVolver;
+    private JButton bBuscar, bEditar, bAtras, bVolver;
     private ArrayList<FichaMedica> fichasMedicasEncontradas = new ArrayList<>();
 
     public GUIEditar(VetConnect clinica) {
@@ -186,62 +180,65 @@ public class GUIEditar extends JFrame implements ActionListener {
             datos[i][0] = ficha.getPropietario().getRut();
             datos[i][1] = ficha.getPropietario().getNombre();
             datos[i][2] = ficha.getMascota().getNombreMascota();
-            datos[i][3] = ficha.getFecha();
+            datos[i][3] = ficha.getMascota().getFechaNacMascota();
         }
         tableModel.setDataVector(datos, columnas);
     }
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == bRut) {
-            if(campoRut.isEnabled()){
-                campoRut.setEnabled(false);
-                bRut.setBackground(new Color(176, 227, 227));
-            } else {
-                campoRut.setEnabled(true);
-                bRut.setBackground(new Color(139, 167, 199));
-            }
+            toggleCampo(campoRut, bRut);
         } else if (e.getSource() == bPropietario) {
-            if(campoNombrePropietario.isEnabled()){
-                campoNombrePropietario.setEnabled(false);
-                bPropietario.setBackground(new Color(176, 227, 227));
-            } else {
-                campoNombrePropietario.setEnabled(true);
-                bPropietario.setBackground(new Color(139, 167, 199));
-            }
+            toggleCampo(campoNombrePropietario, bPropietario);
         } else if (e.getSource() == bMascota) {
-            if(campoNombreMascota.isEnabled()){
-                campoNombreMascota.setEnabled(false);
-                bMascota.setBackground(new Color(176, 227, 227));
-            } else {
-                campoNombreMascota.setEnabled(true);
-                bMascota.setBackground(new Color(139, 167, 199));
-            }
+            toggleCampo(campoNombreMascota, bMascota);
         } else if (e.getSource() == bFecha) {
-            if (campoFecha.isEnabled()) {
-                campoFecha.setEnabled(false);
-                bFecha.setBackground(new Color(176, 227, 227));
-            } else {
-                campoFecha.setEnabled(true);
-                bFecha.setBackground(new Color(139, 167, 199));
-            }
+            toggleCampo(campoFecha, bFecha);
         } else if (e.getSource() == bBuscar) {
-            VetConnectController controller = new VetConnectController();
-            String[] datos = obtenerDatosMascotas();
-            fichasMedicasEncontradas = controller.buscarFichasMedicas(datos);
-            llenarTablaConDatos(fichasMedicasEncontradas);
+            buscarFichasMedicas();
         } else if (e.getSource() == bEditar) {
-            VetConnectController controller = new VetConnectController();
-            FichaMedica fichaMedicaSeleccionada = obtenerFichaSeleccionada();
-            assert fichaMedicaSeleccionada != null;
+            editarFichaMedica();
+        } else if (e.getSource() == bAtras) {
+            volverAFichaMedica();
+        } else if (e.getSource() == bVolver) {
+            volverAInicio();
+        }
+    }
+
+    private void toggleCampo(JTextField campo, JButton boton) {
+        if (campo.isEnabled()) {
+            campo.setEnabled(false);
+            boton.setBackground(new Color(176, 227, 227));
+        } else {
+            campo.setEnabled(true);
+            boton.setBackground(new Color(139, 167, 199));
+        }
+    }
+
+    private void buscarFichasMedicas() {
+        VetConnectController controller = new VetConnectController();
+        String[] datos = obtenerDatosMascotas();
+        fichasMedicasEncontradas = controller.buscarFichasMedicas(datos);
+        llenarTablaConDatos(fichasMedicasEncontradas);
+    }
+
+    private void editarFichaMedica() {
+        VetConnectController controller = new VetConnectController();
+        FichaMedica fichaMedicaSeleccionada = obtenerFichaSeleccionada();
+        if (fichaMedicaSeleccionada != null) {
             controller.editarFichaMedica(fichaMedicaSeleccionada);
             dispose();
             new GUIMascota(clinica, controller).mostrarInterfaz();
-        } else if (e.getSource() == bAtras) {
-            dispose();
-            new GUIFichaMedica(clinica).mostrarInterfaz();
-        } else if (e.getSource() == bVolver) {
-            dispose();
-            new GUIVetConnect(clinica).mostrarInterfaz();
         }
+    }
+
+    private void volverAFichaMedica() {
+        dispose();
+        new GUIFichaMedica(clinica).mostrarInterfaz();
+    }
+
+    private void volverAInicio() {
+        dispose();
+        new GUIVetConnect(clinica).mostrarInterfaz();
     }
 
     private FichaMedica obtenerFichaSeleccionada() {
