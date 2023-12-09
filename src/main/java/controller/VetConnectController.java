@@ -47,7 +47,6 @@ public class VetConnectController {
             return true;
         }
     }
-
     public boolean comprobarSiCamposVacios(String[] datos) {
         for (String dato : datos) {
             if (dato == null || dato.trim().isEmpty()) {

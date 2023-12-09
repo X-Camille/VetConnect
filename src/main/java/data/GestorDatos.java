@@ -116,7 +116,6 @@ public class GestorDatos {
                 bw.write(ficha.toString());
                 bw.newLine();
             }
-
             bw.close();
         } catch (Exception e) {
             System.out.println("Error al escribir las fichas médicas. Favor contactar al administrador.");
