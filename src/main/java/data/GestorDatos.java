@@ -5,6 +5,7 @@ import model.Mascota;
 import model.Propietario;
 
 import java.io.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -19,7 +20,7 @@ public class GestorDatos {
             while ((linea = br.readLine()) != null) {
                 String[] datos = linea.split("/");
                 if (datos.length == 13) {
-                    Mascota mascota = new Mascota(datos[0], datos[1], datos[2], datos[3], datos[4]);
+                    Mascota mascota = new Mascota(datos[0], datos[1], datos[2], datos[3], LocalDate.parse(datos[4]));
                     Propietario propietario = new Propietario(datos[5], datos[6], datos[7], datos[8], datos[9], datos[10]);
                     FichaMedica fichaMedica = new FichaMedica(mascota, propietario, datos[11], datos[12]);
                     datosFichaMedica.add(fichaMedica);

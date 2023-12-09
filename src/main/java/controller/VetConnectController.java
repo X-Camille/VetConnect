@@ -7,6 +7,7 @@ import model.Mascota;
 import model.Propietario;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -42,7 +43,7 @@ public class VetConnectController {
         if(comprobarSiCamposVacios(datos) || !cadenasValidasMascotas(datos)){
             return false;
         } else {
-            mascota = new Mascota(datos[0], datos[1], datos[2], datos[3], datos[4]);
+            mascota = new Mascota(datos[0], datos[1], datos[2], datos[3], LocalDate.parse(datos[4]));
             return true;
         }
     }
