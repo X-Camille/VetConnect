@@ -1,22 +1,32 @@
-package org.example;
+package model;
 import java.util.*;
 public class Propietario {
     // Atributos
     public String nombre;
+    public String apellido;
     public String rut;
+    public String telefono;
+    public String correo;
+    public String direccion;
 
-    Object rutNombre;
 
     // constructor
-    public Propietario() {
+    public Propietario(String nombre, String apellido, String rut, String telefono, String correo, String direccion) {
         this.nombre = nombre;
+        this.apellido = apellido;
         this.rut = rut;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.direccion = direccion;
+    }
+
+    public Propietario() {
+
     }
 
 
-
     // Métodos
-    public Propietario agregarDatos(){
+    /*public Propietario agregarDatos(){
         do {
             System.out.print("Nombre: ");
             nombre = ingresarNombre();
@@ -26,10 +36,10 @@ public class Propietario {
             System.out.print("RUT: ");
             rut = ingresarRut();
         }while(!validarRut(rut));
-        Propietario propietario= new Propietario();
+        Propietario propietario= new Propietario(nombre,rut);
 
         return propietario;
-    }
+    }*/
 
     public String ingresarNombre(){
         Scanner teclado = new Scanner(System.in);
@@ -95,12 +105,28 @@ public class Propietario {
         return true; // RUT válido
     }
 
-    public String getRut(){
-        return rut;
-    }
+
 
     public String getNombre(){
         return nombre;
+    }
+    public String getApellido(){
+        return apellido;
+    }
+    public String getRut(){
+        return rut;
+    }
+    public String getTelefono(){
+        return telefono;
+    }
+    public String getCorreo(){
+        return correo;
+    }
+    public String getDireccion(){
+        return direccion;
+    }
+    public String toString(){
+        return getNombre() + "/" + getApellido() + "/" + getRut() + "/" + getTelefono() + "/" + getCorreo() + "/" + getDireccion() + "/";
     }
 
 }

@@ -1,20 +1,9 @@
-package org.example;
+package model;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Scanner;
 
 public class VetConnect {
-
-    public HashMap<String, List<Mascota>> propietarioMascotas = new HashMap<>();
-    public HashMap<String, String> rutNombre =new HashMap<>();
-
-    private FichaMedica ficha_medica = new FichaMedica("123456789");
-
-    public static void main(String[] args) {
-        VetConnect clinica = new VetConnect();
-        clinica.menuPrincipal();
-    }
+    private FichaMedica ficha_medica;
 
     public void menuPrincipal() {
         Scanner scanner = new Scanner(System.in);

@@ -1,26 +1,25 @@
-package org.example;
+package model;
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.format.DateTimeFormatter;
 
 public class Mascota {
-    // atributos de la clase de mascota
-    private String NombreMascota;
-    private String EspecieMascota;
-    private String RazaMascota;
-    private LocalDate FechaNacMascota;
-    private String SexoMascota;
-
-    // constructor
-    public Mascota(String nombre, String especie, String raza, LocalDate fechaNac, String sexo) {
+    public Mascota(String nombre, String especie, String raza, String sexo, String fechaNac) {
         NombreMascota = nombre;
         EspecieMascota = especie;
         RazaMascota = raza;
-        FechaNacMascota = fechaNac;
         SexoMascota = sexo;
+        FechaNacMascota = fechaNac;
+    }
+    public Mascota(){
+
     }
 
-    // get y set de NombreMascota
+    public static void main(String[] args) {
+
+    }
+
+    private String NombreMascota;
+
     public String getNombreMascota() {
         return NombreMascota;
     }
@@ -29,7 +28,8 @@ public class Mascota {
         NombreMascota = Nombre;
     }
 
-    // get y set de EspecieMascota
+    private String EspecieMascota;
+
     public String getEspecieMascota() {
         return EspecieMascota;
     }
@@ -38,7 +38,8 @@ public class Mascota {
         EspecieMascota = Especie;
     }
 
-    //get y set de RazaMascota
+    private String RazaMascota;
+
     public String getRazaMascota() {
         return RazaMascota;
     }
@@ -47,17 +48,16 @@ public class Mascota {
         RazaMascota = Raza;
     }
 
-    //get y set de FechaNacMascota
-    public LocalDate getFechaNacMascota() {
+    private String FechaNacMascota;
+
+    public String getFechaNacMascota() {
         return FechaNacMascota;
     }
 
-    public void setFechaNacMascota(LocalDate Fecha) {
-        FechaNacMascota = Fecha;
-    }
 
 
-    //get yset de SexoMascota
+    private String SexoMascota;
+
     public String getSexoMascota() {
         return SexoMascota;
     }
@@ -66,12 +66,12 @@ public class Mascota {
         SexoMascota = sexoMascota;
     }
 
-
+/*
     public String calcularEdad() {
         LocalDate fechahoy = LocalDate.now();
         Period periodo = Period.between(FechaNacMascota, fechahoy);
         return (periodo.getYears() + " años y " + periodo.getMonths() + "meses.");
-    }
+    }*/
 
     public void setDueno() {
         System.out.println("Esto es un placeholder!!");
@@ -81,6 +81,10 @@ public class Mascota {
     public void setFichaMedica(){
         System.out.println("Esto es un placeholder!!");
         System.out.println("La ficha es otro objeto!!!");
+    }
+
+    public String toString(){
+        return getNombreMascota() + "/" + getEspecieMascota() + "/" + getRazaMascota() + "/" + getSexoMascota() + "/" + getFechaNacMascota() + "/";
     }
 
 }
