@@ -1,10 +1,12 @@
 package controller;
 import data.GestorDatos;
+import gestorDatos.GestorPDF;
 import model.Buscador;
 import model.FichaMedica;
 import model.Mascota;
 import model.Propietario;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -36,17 +38,51 @@ public class VetConnectController {
     }
 
     public final GestorDatos gestorDatos = new GestorDatos();
-    public void validarEntradasMascotas(String[] datos) {
-        if(true == true){
+    public boolean validarEntradasMascotas(String[] datos) {
+        if(comprobarSiCamposVacios(datos) || !cadenasValidasMascotas(datos)){
+            return false;
+        } else {
             mascota = new Mascota(datos[0], datos[1], datos[2], datos[3], datos[4]);
+            return true;
         }
     }
 
-    public void validarEntradasPropietario(String[] datos){
-        if(true == true){
+    public boolean comprobarSiCamposVacios(String[] datos) {
+        for (String dato : datos) {
+            if (dato == null || dato.trim().isEmpty()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean cadenasValidasMascotas(String[] datos) {
+        for (int i=0; i < (datos.length-1); i++) {
+            if (!datos[i].matches("^[^0-9]*$")) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean validarEntradasPropietario(String[] datos){
+        if(comprobarSiCamposVacios(datos) || !cadenasValidasPropietario(datos)){
+           return false;
+        } else {
             propietario = new Propietario(datos[0], datos[1], datos[2], datos[3], datos[4], datos[5]);
+            if(propietario.validarRut(datos[2])){
+                return true;
+            } else {
+                propietario = null;
+                return false;
+            }
         }
     }
+
+    public boolean cadenasValidasPropietario(String[] datos) {
+        return datos[0].matches("^[^0-9]*$") || datos[1].matches("^[^0-9]*$");
+    }
+
 
     public void validarEntradasDescripcion(String[] datos){
         if(true == true){
@@ -84,5 +120,10 @@ public class VetConnectController {
 
     public boolean eliminarFichaMedica(FichaMedica ficha){
         return gestorDatos.eliminarFichaMedica(ficha, "C:/Users/Lenovo/Desktop/fichas_medicas.txt");
+    }
+
+    public boolean generarPDF(FichaMedica ficha) throws IOException {
+        GestorPDF gestor = new GestorPDF();
+        return gestor.generarArchivoPDF(ficha);
     }
 }
