@@ -106,7 +106,6 @@ public class GestorDatos {
         }
     }
 
-
     private void escribirFichasMedicas(ArrayList<FichaMedica> fichas, String direccionArchivo) {
         try {
             FileWriter fw = new FileWriter(direccionArchivo);
