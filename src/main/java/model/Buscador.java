@@ -35,7 +35,6 @@ public class Buscador {
         return fichasEncontradas;
     }
 
-
     public void inicializarVariablesBusqueda(String[] datos){
         this.rut = datos[0];
         this.nombrePropietario = datos[1];

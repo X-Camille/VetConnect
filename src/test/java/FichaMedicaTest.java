@@ -1,5 +1,3 @@
-package org.example;
-
 import org.example.FichaMedica;
 import org.junit.Test;
 import static org.junit.Assert.*;

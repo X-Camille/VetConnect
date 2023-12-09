@@ -1,6 +1,6 @@
 package controller;
 import data.GestorDatos;
-import gestorDatos.GestorPDF;
+import data.GestorPDF;
 import model.Buscador;
 import model.FichaMedica;
 import model.Mascota;
