@@ -37,9 +37,12 @@ public class GUIPropietario extends JFrame {
         establecerCampos();
 
         bSiguiente.addActionListener(e -> {
-            controller.validarEntradasPropietario(obtenerDatosPropietario());
-            dispose();
-            new GUIDescripcion(clinica, controller).mostrarInterfaz();
+            if(controller.validarEntradasPropietario(obtenerDatosPropietario())){
+                dispose();
+                new GUIDescripcion(clinica, controller).mostrarInterfaz();
+            } else {
+                JOptionPane.showMessageDialog(this, "Los campos no pueden estar en blanco ni deben contener números.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         });
 
         bAtras.addActionListener(e -> {

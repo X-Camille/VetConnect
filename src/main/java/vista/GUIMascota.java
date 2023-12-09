@@ -47,9 +47,12 @@ public class GUIMascota extends JFrame {
         establecerCampos();
 
         bSiguiente.addActionListener(e -> {
-            controller.validarEntradasMascotas(obtenerDatosMascotas());
-            dispose();
-            new GUIPropietario(clinica, controller).mostrarInterfaz();
+            if (controller.validarEntradasMascotas(obtenerDatosMascotas())){
+                dispose();
+                new GUIPropietario(clinica, controller).mostrarInterfaz();
+            } else {
+                JOptionPane.showMessageDialog(this, "Los campos no pueden estar en blanco ni deben contener números.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         });
 
         bAtras.addActionListener(e -> {

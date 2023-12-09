@@ -12,8 +12,8 @@ import java.awt.*;
 public class GUIDescripcion extends JFrame {
 
     private final VetConnect clinica;;
-    private JTextField campoTratamiento;
-    private JTextField campoDiagnostico;
+    private JTextArea campoTratamiento;
+    private JTextArea campoDiagnostico;
     private JButton bIngresarFicha;
     private JButton bAtras;
     private JButton bVolver;
@@ -28,10 +28,14 @@ public class GUIDescripcion extends JFrame {
         panelPrincipal = crearPanelPrincipal();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
+        campoDiagnostico = new JTextArea(5, 20);
+        campoTratamiento = new JTextArea(5, 20);
+
+        setSize(1000, 600); // Ajustar el tamaño de la ventana
+
         JLabel labelTitulo = crearLabelTitulo();
         panelPrincipal.add(labelTitulo);
-        configurarDimensionesCampos();
-        crearPanelesCampos(panelPrincipal);
+        crearPanelesCampos(panelPrincipal); // Llamada a los paneles de campos solo una vez
         establecerBotones(panelPrincipal);
         establecerCampos();
 
@@ -71,10 +75,14 @@ public class GUIDescripcion extends JFrame {
         panelPrincipal.add(panelTratamiento);
     }
 
-    private void configurarDimensionesCampos() {
-        campoDiagnostico= new JTextField(20);
-        campoTratamiento = new JTextField(20);
+    private JPanel crearPanelCampo(String labelText, JTextArea textArea) {
+        JPanel panelCampo = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        JLabel labelCampo = new JLabel(labelText);
+        panelCampo.add(labelCampo);
+        panelCampo.add(new JScrollPane(textArea)); // Añadir JScrollPane para desplazarse por el texto
+        return panelCampo;
     }
+
 
     private JPanel crearPanelPrincipal() {
         JPanel panelPrincipal = new JPanel();
@@ -88,14 +96,6 @@ public class GUIDescripcion extends JFrame {
         labelTitulo.setBorder(new EmptyBorder(20, 0, 10, 0));
         labelTitulo.setAlignmentX(Component.CENTER_ALIGNMENT);
         return labelTitulo;
-    }
-
-    private JPanel crearPanelCampo(String labelText, JTextField textField) {
-        JPanel panelCampo = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        JLabel labelCampo = new JLabel(labelText);
-        panelCampo.add(labelCampo);
-        panelCampo.add(textField);
-        return panelCampo;
     }
 
     private void establecerBotones(JPanel panelPrincipal) {

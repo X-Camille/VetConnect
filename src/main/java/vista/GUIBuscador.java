@@ -112,6 +112,7 @@ public class GUIBuscador extends JFrame implements ActionListener {
     }
     private void configurarDimensionesCampos() {
         campoRut = new JTextField(20);
+        campoRut.setEnabled(false);
         campoNombrePropietario = new JTextField(20);
         campoNombrePropietario.setEnabled(false); // Deshabilitar campo al inicio
         campoNombreMascota = new JTextField(20);
@@ -160,6 +161,24 @@ public class GUIBuscador extends JFrame implements ActionListener {
         return button;
     }
 
+    public boolean comprobarSiCamposVacios() {
+        boolean camposVacios = false;
+
+        if (campoNombrePropietario.isEnabled() && campoNombrePropietario.getText().isEmpty()) {
+            camposVacios = true;
+        }
+        if (campoNombreMascota.isEnabled() && campoNombreMascota.getText().isEmpty()) {
+            camposVacios = true;
+        }
+        if (campoRut.isEnabled() && campoRut.getText().isEmpty()) {
+            camposVacios = true;
+        }
+        if (campoFecha.isEnabled() && campoFecha.getText().isEmpty()) {
+            camposVacios = true;
+        }
+        return camposVacios;
+    }
+
     private JPanel crearPanelBotones(JButton siguienteButton, JButton atrasButton, JButton bVolver) {
         JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER));
         panelBotones.add(siguienteButton);
@@ -193,40 +212,44 @@ public class GUIBuscador extends JFrame implements ActionListener {
         if (e.getSource() == bRut) {
             if(campoRut.isEnabled()){
                 campoRut.setEnabled(false);
-                bRut.setSelected(false);
+                bRut.setBackground(new Color(176, 227, 227));
             } else {
                 campoRut.setEnabled(true);
-                bRut.setSelected(true);
+                bRut.setBackground(new Color(139, 167, 199));
             }
         } else if (e.getSource() == bPropietario) {
             if(campoNombrePropietario.isEnabled()){
                 campoNombrePropietario.setEnabled(false);
-                bPropietario.setSelected(false);
+                bPropietario.setBackground(new Color(176, 227, 227));
             } else {
                 campoNombrePropietario.setEnabled(true);
-                bPropietario.setSelected(true);
+                bPropietario.setBackground(new Color(139, 167, 199));
             }
         } else if (e.getSource() == bMascota) {
             if(campoNombreMascota.isEnabled()){
                 campoNombreMascota.setEnabled(false);
-                bMascota.setSelected(false);
+                bMascota.setBackground(new Color(176, 227, 227));
             } else {
                 campoNombreMascota.setEnabled(true);
-                bMascota.setSelected(true);
+                bMascota.setBackground(new Color(139, 167, 199));
             }
         } else if (e.getSource() == bFecha) {
             if (campoFecha.isEnabled()) {
                 campoFecha.setEnabled(false);
-                bFecha.setSelected(false);
+                bFecha.setBackground(new Color(176, 227, 227));
             } else {
                 campoFecha.setEnabled(true);
-                bFecha.setSelected(true);
+                bFecha.setBackground(new Color(139, 167, 199));
             }
         } else if (e.getSource() == bBuscar) {
-            VetConnectController controller = new VetConnectController();
-            String[] datos = obtenerDatosMascotas();
-            fichasMedicasEncontradas = controller.buscarFichasMedicas(datos);
-            llenarTablaConDatos(fichasMedicasEncontradas);
+            if (!comprobarSiCamposVacios()) {
+                VetConnectController controller = new VetConnectController();
+                String[] datos = obtenerDatosMascotas();
+                fichasMedicasEncontradas = controller.buscarFichasMedicas(datos);
+                llenarTablaConDatos(fichasMedicasEncontradas);
+            } else {
+                JOptionPane.showMessageDialog(this, "No pueden haber campos de búsqueda vacíos.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         } else if (e.getSource() == bVer) {
             VetConnectController controller = new VetConnectController();
             FichaMedica fichaMedicaSeleccionada = obtenerFichaSeleccionada();

@@ -1,5 +1,6 @@
 package vista;
 
+import controller.VetConnectController;
 import model.FichaMedica;
 import model.VetConnect;
 import vista.GUIFichaMedica;
@@ -10,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class GUIVerFicha extends JFrame implements ActionListener {
     private final VetConnect clinica;
@@ -160,7 +162,16 @@ public class GUIVerFicha extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == bExportar) {
-            dispose();
+            VetConnectController controller = new VetConnectController();
+            try {
+                if(controller.generarPDF(ficha)){
+                    JOptionPane.showMessageDialog(this, "Archivo PDF generado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se ha podido generar el archivo PDF.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
         } else if (e.getSource() == bAtras) {
             dispose();
             new GUIBuscador(clinica).mostrarInterfaz();
