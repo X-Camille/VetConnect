@@ -19,7 +19,7 @@ public class VetConnectController {
 
     private FichaMedica fichaEditada;
 
-    public FichaMedica getFichaEditando(){
+    public FichaMedica getFichaEditada(){
         return fichaEditada;
     }
     public Mascota getMascota(){
