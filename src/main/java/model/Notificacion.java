@@ -21,10 +21,11 @@ public class Notificacion {
     }
 
     public Notificacion(String encabezado, String cuerpo, String fecha){
-        if (FechaValida(fecha) != null){
+        if ((FechaValida(fecha) != null)&&(!cuerpo.isEmpty())&&(!encabezado.isEmpty())){
             this.fecha = FechaValida(fecha);
             this.cuerpo = cuerpo;
             this.encabezado = encabezado;
         } else throw new IllegalArgumentException("La fecha ingresada no es válida.");
     }
+
 }
