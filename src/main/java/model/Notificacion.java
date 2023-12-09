@@ -1,5 +1,7 @@
 package model;
 
+import javax.swing.*;
+import java.awt.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -26,6 +28,32 @@ public class Notificacion {
             this.cuerpo = cuerpo;
             this.encabezado = encabezado;
         } else throw new IllegalArgumentException("La fecha ingresada no es válida.");
+    }
+
+    private void CrearNotificacion(){
+
+        TrayIcon trayIcon = new TrayIcon(new ImageIcon("src/main/java/model/icon.jpg").getImage());
+        trayIcon.setToolTip(this.encabezado); //hay que agregar una imagen de icono, usé un placeholder haha
+
+        try {
+            SystemTray.getSystemTray().add(trayIcon);
+
+            trayIcon.displayMessage(this.encabezado, this.cuerpo, TrayIcon.MessageType.INFO);
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void LanzarNotificacion(){
+        if (SystemTray.isSupported()){
+            if (LocalDate.now().equals(this.fecha)){
+                CrearNotificacion();
+            } else {
+                System.out.println("Error, fecha no correspondiente.");
+            }
+        } else {
+            System.out.println("SystemTray no disponible en su sistema");
+        }
     }
 
 }
