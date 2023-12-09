@@ -6,12 +6,35 @@ public class FichaMedica {
     private String diagnostico = "";
     private String tratamiento = "";
     private final Propietario propietario;
-
     private final Mascota mascota;
+    private String fecha;
 
-    public FichaMedica() {
-        propietario = new Propietario();
-        mascota = new Mascota();
+    public FichaMedica(Mascota mascota, Propietario propietario, String diagnostico, String tratamiento) {
+        this.mascota = mascota;
+        this.propietario = propietario;
+        this.diagnostico = diagnostico;
+        this.tratamiento = tratamiento;
+        this.fecha = "N/A";
+    }
+
+    public Propietario getPropietario(){
+        return propietario;
+    }
+
+    public Mascota getMascota(){
+        return mascota;
+    }
+
+    public String getFecha(){
+        return fecha;
+    }
+
+    public String getDiagnostico(){
+        return diagnostico;
+    }
+
+    public String getTratamiento(){
+        return tratamiento;
     }
 
     public void crearFichaMedica() {
@@ -63,8 +86,8 @@ public class FichaMedica {
     }
 
     public void agregarDatosUsuario() {
-        System.out.println("Ingrese los datos del usuario: ");
-        propietario.agregarDatos();
+       /* System.out.println("Ingrese los datos del usuario: ");
+        propietario.agregarDatos();*/
     }
 
     public void agregarDatosAnimal() {
@@ -88,5 +111,9 @@ public class FichaMedica {
         System.out.println("El rut del propietario es " + propietario.getRut());
         System.out.println(diagnostico);
         System.out.println(tratamiento);
+    }
+
+    public String toString(){
+        return getMascota().toString() + getPropietario().toString() + getDiagnostico() + "/" + getTratamiento() + "/";
     }
 }

@@ -3,12 +3,12 @@ import java.time.LocalDate;
 import java.time.Period;
 
 public class Mascota {
-    public Mascota(String nombre, String especie, String raza, LocalDate fechaNac, String sexo) {
+    public Mascota(String nombre, String especie, String raza, String sexo, String fechaNac) {
         NombreMascota = nombre;
         EspecieMascota = especie;
         RazaMascota = raza;
-        FechaNacMascota = fechaNac;
         SexoMascota = sexo;
+        FechaNacMascota = fechaNac;
     }
     public Mascota(){
 
@@ -48,15 +48,13 @@ public class Mascota {
         RazaMascota = Raza;
     }
 
-    private LocalDate FechaNacMascota;
+    private String FechaNacMascota;
 
-    public LocalDate getFechaNacMascota() {
+    public String getFechaNacMascota() {
         return FechaNacMascota;
     }
 
-    public void setFechaNacMascota(LocalDate Fecha) {
-        FechaNacMascota = Fecha;
-    }
+
 
     private String SexoMascota;
 
@@ -68,12 +66,12 @@ public class Mascota {
         SexoMascota = sexoMascota;
     }
 
-
+/*
     public String calcularEdad() {
         LocalDate fechahoy = LocalDate.now();
         Period periodo = Period.between(FechaNacMascota, fechahoy);
         return (periodo.getYears() + " años y " + periodo.getMonths() + "meses.");
-    }
+    }*/
 
     public void setDueno() {
         System.out.println("Esto es un placeholder!!");
@@ -83,6 +81,10 @@ public class Mascota {
     public void setFichaMedica(){
         System.out.println("Esto es un placeholder!!");
         System.out.println("La ficha es otro objeto!!!");
+    }
+
+    public String toString(){
+        return getNombreMascota() + "/" + getEspecieMascota() + "/" + getRazaMascota() + "/" + getSexoMascota() + "/" + getFechaNacMascota() + "/";
     }
 
 }

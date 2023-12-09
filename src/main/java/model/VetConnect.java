@@ -3,7 +3,7 @@ package model;
 import java.util.Scanner;
 
 public class VetConnect {
-    private FichaMedica ficha_medica = new FichaMedica();
+    private FichaMedica ficha_medica;
 
     public void menuPrincipal() {
         Scanner scanner = new Scanner(System.in);
