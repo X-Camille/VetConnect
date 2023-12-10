@@ -1,7 +1,9 @@
 package model;
 
+import model.Mascota;
+import model.Propietario;
+
 import java.time.LocalDate;
-import java.util.*;
 
 public class FichaMedica {
     private String diagnostico;
@@ -16,38 +18,43 @@ public class FichaMedica {
         this.tratamiento = tratamiento;
     }
 
-    public FichaMedica(){ // Constructor para probar UT
+    public FichaMedica() { // Constructor para probar UT
         this.mascota = null;
         this.propietario = null;
         this.diagnostico = "";
         this.tratamiento = "";
     }
 
-    public Propietario getPropietario(){
+    public Propietario getPropietario() {
         return propietario;
     }
 
-    public Mascota getMascota(){
+    public Mascota getMascota() {
         return mascota;
     }
 
-    public String getDiagnostico(){
+    public String getDiagnostico() {
         return diagnostico;
     }
 
-    public String getTratamiento(){
+    public String getTratamiento() {
         return tratamiento;
     }
 
-    public String toString(){
-        return getMascota().toString() + getPropietario().toString() + getDiagnostico() + "/" + getTratamiento() + "/";
+    public String toString() {
+        return getMascota().toString() + "/" + getPropietario().toString() + "/" + getDiagnostico() + "/" + getTratamiento() + "/";
     }
 
-    public void setDiagnostico(String diagnóstico) {
-        this.diagnostico = diagnóstico;
+    public void setDiagnostico(String diagnostico) {
+        this.diagnostico = diagnostico;
     }
 
-    public void setTratamiento(String tratamiento){
+    public void setTratamiento(String tratamiento) {
         this.tratamiento = tratamiento;
+    }
+
+    public LocalDate getFecha() {
+        // Devuelve la fecha actual
+        return LocalDate.now();
     }
 }

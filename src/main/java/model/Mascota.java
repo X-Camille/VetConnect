@@ -1,6 +1,5 @@
 package model;
 import java.time.LocalDate;
-import java.time.Period;
 
 public class Mascota {
     private String nombreMascota;
@@ -9,12 +8,12 @@ public class Mascota {
     private String sexo;
     private LocalDate fechaNacMascota;
 
-    public Mascota(String nombre, String especie, String raza, String sexo, LocalDate fechaNac) {
+    public Mascota(String nombre, String especie, String raza, String sexo, String fechaNac) {
         this.nombreMascota = nombre;
         this.especie = especie;
         this.raza = raza;
         this.sexo = sexo;
-        this.fechaNacMascota = fechaNac;
+        this.fechaNacMascota = LocalDate.parse(fechaNac);
     }
     public String getNombreMascota() {
         return nombreMascota;

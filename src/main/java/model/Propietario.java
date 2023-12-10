@@ -1,5 +1,5 @@
 package model;
-import java.util.*;
+
 public class Propietario {
     // Atributos
     public String nombre;
@@ -11,7 +11,7 @@ public class Propietario {
 
 
     // constructor
-    public Propietario(String nombre, String apellido, String rut, String telefono, String correo, String direccion) {
+    public Propietario(String nombre, String apellido, String rut) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.rut = rut;
@@ -43,7 +43,7 @@ public class Propietario {
         return direccion;
     }
 
-    public Boolean validarNombre(String nombre) {
+    public static Boolean validarNombre(String nombre) {
         if (nombre.isEmpty()) {
             return true;  // Nombre vacío
         }
@@ -59,7 +59,7 @@ public class Propietario {
     }
 
 
-    public Boolean validarRut(String rut) {
+    public static Boolean validarRut(String rut) {
         if (rut.isEmpty()) {
             return false; // Si la cadena rut está vacía, retorna false
         }

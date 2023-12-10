@@ -149,7 +149,7 @@ public class GUIMascota extends JFrame {
             campoEspecie.setText(mascota.getEspecieMascota());
             campoRaza.setText(mascota.getRazaMascota());
             campoSexo.setText(mascota.getSexoMascota());
-            campoFechaNacimiento.setText(mascota.getFechaNacMascota());
+            campoFechaNacimiento.setText(String.valueOf(mascota.getFechaNacMascota()));
         }
     }
 
