@@ -92,5 +92,5 @@ public class MascotaTest {
         assertEquals("NuevoSexo", mascota.getSexoMascota());
     }
 
-    // Ajusta las pruebas según la lógica específica de tu aplicación.
+
 }

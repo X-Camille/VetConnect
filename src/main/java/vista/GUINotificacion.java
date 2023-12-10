@@ -31,12 +31,12 @@ public class GUINotificacion extends JFrame implements ActionListener {
         panelPrincipal = crearPanelPrincipal();
         setDefaultCloseOperation(0);
 
-        Encabezado();
-        Cuerpo();
-        Fecha();
+        encabezado();
+        cuerpo();
+        agregarFecha();
 
-        BotonCrear();
-        Atras();
+        botonCrear();
+        atras();
 
         add(panelPrincipal);
 
@@ -51,7 +51,7 @@ public class GUINotificacion extends JFrame implements ActionListener {
         return panelPrincipal;
     }
 
-    private void Encabezado() {
+    private void encabezado() {
         JLabel labelCabeza = new JLabel("Ingrese título de la notificación");
         JTextField campoCabeza = new JTextField();
         campoCabeza.setBounds(20, 70, 300, 20);
@@ -65,7 +65,7 @@ public class GUINotificacion extends JFrame implements ActionListener {
     }
 
 
-    private void Cuerpo() {
+    private void cuerpo() {
         JLabel labelCuerpo = new JLabel("Ingrese contenido de la notificación");
         JTextField campoCuerpo = new JTextField();
         campoCuerpo.setBounds(20, 130, 300, 80);
@@ -79,7 +79,7 @@ public class GUINotificacion extends JFrame implements ActionListener {
     }
 
 
-    private void Fecha() {
+    private void agregarFecha() {
         JLabel labelFecha = new JLabel("Ingrese fecha (yyyy-MM-dd)");
         JTextField campoFecha = new JTextField();
         campoFecha.setBounds(20, 250, 300, 20);
@@ -91,7 +91,7 @@ public class GUINotificacion extends JFrame implements ActionListener {
         this.add(campoFecha);
     }
 
-    private void BotonCrear() {
+    private void botonCrear() {
         JButton botonCrear = new JButton("CREAR NOTIFICACIÓN");
         botonCrear.setBounds(20, 280, 300, 30);
         botonCrear.setFont(new Font("Arial", Font.BOLD, 14));
@@ -99,7 +99,7 @@ public class GUINotificacion extends JFrame implements ActionListener {
         this.add(botonCrear);
         this.bCrearNotificacion.addActionListener(this);
     }
-    private void Atras() {
+    private void atras() {
         JButton botonAtras = new JButton("ATRÁS");
         botonAtras.setBounds(20, 320, 300, 30);
         botonAtras.setFont(new Font("Arial", Font.BOLD, 14));
@@ -108,7 +108,7 @@ public class GUINotificacion extends JFrame implements ActionListener {
         this.bAtras.addActionListener(this);
     }
 
-    private Notificacion CrearNotificacion(){
+    private Notificacion crearNotificacion(){
         try {
             return new Notificacion(this.campoCabeza.getText(),
                     this.campoCuerpo.getText(),this.campoFecha.getText());
@@ -123,12 +123,11 @@ public class GUINotificacion extends JFrame implements ActionListener {
             this.dispose();
         }
         if (e.getSource() == bCrearNotificacion){
-            Notificacion notificacion = CrearNotificacion();
+            Notificacion notificacion = crearNotificacion();
             if (notificacion != null){
                 JOptionPane.showMessageDialog(this,"Notificación creada correctamente");
                 new GUIVetConnect(this.clinica).mostrarInterfaz();
                 this.dispose();
-                //aquí meter con el controller para que guarde los datos :)
             } else {
                 JOptionPane.showMessageDialog(this,"Error, ingrese correctamente los datos");
             }

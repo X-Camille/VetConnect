@@ -11,7 +11,7 @@ import java.awt.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-public class GUIMascota extends JFrame {
+public class GUIMascota extends JFrame implements ActionListener{
 
     private final VetConnect clinica;
     private JTextField campoNombre;
@@ -45,27 +45,6 @@ public class GUIMascota extends JFrame {
         crearPanelesCampos(panelPrincipal);
         establecerBotones(panelPrincipal);
         establecerCampos();
-
-        bSiguiente.addActionListener(e -> {
-            if (controller.validarEntradasMascotas(obtenerDatosMascotas())){
-                dispose();
-                new GUIPropietario(clinica, controller).mostrarInterfaz();
-            } else {
-                JOptionPane.showMessageDialog(this, "Los campos no pueden estar en blanco ni deben contener números.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        });
-
-        bAtras.addActionListener(e -> {
-            dispose();
-            controller = null;
-            new GUIFichaMedica(clinica).mostrarInterfaz();
-        });
-
-        bVolver.addActionListener(e -> {
-            dispose();
-            controller = null;
-            new GUIVetConnect(clinica).mostrarInterfaz();
-        });
 
         add(panelPrincipal);
         pack();
@@ -127,6 +106,7 @@ public class GUIMascota extends JFrame {
 
     private JButton crearBoton(String text, Color bgColor) {
         JButton button = new JButton(text);
+        button.addActionListener(this);
         button.setBackground(bgColor);
         button.setForeground(Color.BLACK);
         button.setPreferredSize(new Dimension(150, 40));
@@ -161,5 +141,37 @@ public class GUIMascota extends JFrame {
         String fechaNacimientoText = campoFechaNacimiento.getText();
         return new String[]{nombreText, especieText, razaText, sexoText, fechaNacimientoText};
     }
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == bSiguiente) {
+            procesarSiguiente();
+        } else if (e.getSource() == bAtras) {
+            volverAtras();
+        } else if (e.getSource() == bVolver) {
+            volverAVetConnect();
+        }
+    }
+
+    private void procesarSiguiente() {
+        if (controller.validarEntradasMascotas(obtenerDatosMascotas())) {
+            dispose();
+            new GUIPropietario(clinica, controller).mostrarInterfaz();
+        } else {
+            JOptionPane.showMessageDialog(this, "Los campos no pueden estar en blanco ni deben contener números.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void volverAtras() {
+        dispose();
+        controller = null;
+        new GUIFichaMedica(clinica).mostrarInterfaz();
+    }
+
+    private void volverAVetConnect() {
+        dispose();
+        controller = null;
+        new GUIVetConnect(clinica).mostrarInterfaz();
+    }
+
 
 }

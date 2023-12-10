@@ -163,7 +163,7 @@ public class GUIEditar extends JFrame implements ActionListener {
         return panelBotones;
     }
 
-    private String[] obtenerDatosMascotas() {
+    private String[] obtenerDatosCampos() {
         String rutText = campoRut.getText();
         String nombrePropietarioText = campoNombrePropietario.getText();
         String nombreMascotaText = campoNombreMascota.getText();
@@ -216,7 +216,7 @@ public class GUIEditar extends JFrame implements ActionListener {
 
     private void buscarFichasMedicas() {
         VetConnectController controller = new VetConnectController();
-        String[] datos = obtenerDatosMascotas();
+        String[] datos = obtenerDatosCampos();
         fichasMedicasEncontradas = controller.buscarFichasMedicas(datos);
         llenarTablaConDatos(fichasMedicasEncontradas);
     }

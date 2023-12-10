@@ -8,8 +8,10 @@ import model.VetConnect;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class GUIDescripcion extends JFrame {
+public class GUIDescripcion extends JFrame implements ActionListener {
 
     private final VetConnect clinica;;
     private JTextArea campoTratamiento;
@@ -38,29 +40,6 @@ public class GUIDescripcion extends JFrame {
         crearPanelesCampos(panelPrincipal); // Llamada a los paneles de campos solo una vez
         establecerBotones(panelPrincipal);
         establecerCampos();
-
-        bIngresarFicha.addActionListener(e -> {
-            controller.validarEntradasDescripcion(obtenerDatosFichaMedica());
-            controller.enviarDatos();
-            if (controller.getFichaEditando() != null){
-                JOptionPane.showMessageDialog(this, "Se han guardado los cambios.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(this, "La ficha médica ha sido agregada con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            }
-            dispose();
-            new GUIVetConnect(clinica).mostrarInterfaz();
-        });
-
-        bAtras.addActionListener(e -> {
-            dispose();
-            new GUIPropietario(clinica, controller).mostrarInterfaz();
-        });
-
-        bVolver.addActionListener(e -> {
-            controller = null;
-            dispose();
-            new GUIVetConnect(clinica).mostrarInterfaz();
-        });
 
         add(panelPrincipal);
         pack();
@@ -99,7 +78,7 @@ public class GUIDescripcion extends JFrame {
     }
 
     private void establecerBotones(JPanel panelPrincipal) {
-        if(controller.getFichaEditando() != null){
+        if(controller.getFichaEditada() != null){
             bIngresarFicha = crearBoton("Guardar Cambios", new Color(176, 227, 227));
         } else {
             bIngresarFicha = crearBoton("Ingresar Ficha Médica", new Color(176, 227, 227));
@@ -113,6 +92,7 @@ public class GUIDescripcion extends JFrame {
 
     private JButton crearBoton(String text, Color bgColor) {
         JButton button = new JButton(text);
+        button.addActionListener(this);
         button.setBackground(bgColor);
         button.setForeground(Color.BLACK);
         button.setPreferredSize(new Dimension(150, 40));
@@ -139,4 +119,38 @@ public class GUIDescripcion extends JFrame {
         String tratamientoText = campoTratamiento.getText();
         return new String[]{diagnosticoText, tratamientoText};
     }
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == bIngresarFicha) {
+            procesarIngresoFicha();
+        } else if (e.getSource() == bAtras) {
+            volverAtras();
+        } else if (e.getSource() == bVolver) {
+            volverAVetConnect();
+        }
+    }
+
+    private void procesarIngresoFicha() {
+        controller.validarEntradasDescripcion(obtenerDatosFichaMedica());
+        controller.enviarDatos();
+        if (controller.getFichaEditada() != null){
+            JOptionPane.showMessageDialog(this, "Se han guardado los cambios.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "La ficha médica ha sido agregada con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        }
+        dispose();
+        new GUIVetConnect(clinica).mostrarInterfaz();
+    }
+
+    private void volverAtras() {
+        dispose();
+        new GUIPropietario(clinica, controller).mostrarInterfaz();
+    }
+
+    private void volverAVetConnect() {
+        controller = null;
+        dispose();
+        new GUIVetConnect(clinica).mostrarInterfaz();
+    }
+
 }

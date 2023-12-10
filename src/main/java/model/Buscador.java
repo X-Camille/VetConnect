@@ -16,24 +16,21 @@ public class Buscador {
     public ArrayList<FichaMedica> iniciarBusquedaPorDatos(String[] datos) {
         inicializarVariablesBusqueda(datos);
 
-        boolean buscarPorRut = !rut.isEmpty();
-        boolean buscarPorNombrePropietario = !nombrePropietario.isEmpty();
-        boolean buscarPorNombreMascota = !nombreMascota.isEmpty();
-        boolean buscarPorFecha = !fecha.isEmpty();
-
         fichasEncontradas = new ArrayList<>();
 
         for (FichaMedica ficha : fichasMedicas) {
-            boolean coincideRut = (!buscarPorRut || ficha.getPropietario().getRut().equals(rut));
-            boolean coincideNombrePropietario = (!buscarPorNombrePropietario || ficha.getPropietario().getNombre().equalsIgnoreCase(nombrePropietario));
-            boolean coincideNombreMascota = (!buscarPorNombreMascota || ficha.getMascota().getNombreMascota().equalsIgnoreCase(nombreMascota));
-            boolean coincideFecha = (!buscarPorFecha || ficha.getMascota().getFechaNacMascota().equals(LocalDate.parse(fecha)));
-
-            if (coincideRut && coincideNombrePropietario && coincideNombreMascota && coincideFecha) {
+            if (cumpleCondicionesBusqueda(ficha)) {
                 fichasEncontradas.add(ficha);
             }
         }
         return fichasEncontradas;
+    }
+
+    private boolean cumpleCondicionesBusqueda(FichaMedica ficha) {
+        return (rut.isEmpty() || ficha.getPropietario().getRut().equals(rut))
+                && (nombrePropietario.isEmpty() || ficha.getPropietario().getNombre().equalsIgnoreCase(nombrePropietario))
+                && (nombreMascota.isEmpty() || ficha.getMascota().getNombreMascota().equalsIgnoreCase(nombreMascota))
+                && (fecha.isEmpty() || ficha.getMascota().getFechaNacMascota().equals(LocalDate.parse(fecha)));
     }
 
     public void inicializarVariablesBusqueda(String[] datos){

@@ -10,7 +10,7 @@ public class Notificacion {
     private String encabezado, cuerpo;
     private LocalDate fecha;
 
-    private LocalDate FechaValida(String fechaString){
+    private LocalDate fechaValida(String fechaString){
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         try {
             LocalDate fecha = LocalDate.parse(fechaString, formato);
@@ -23,14 +23,14 @@ public class Notificacion {
     }
 
     public Notificacion(String encabezado, String cuerpo, String fecha){
-        if ((FechaValida(fecha) != null)&&(!cuerpo.isEmpty())&&(!encabezado.isEmpty())){
-            this.fecha = FechaValida(fecha);
+        if ((fechaValida(fecha) != null)&&(!cuerpo.isEmpty())&&(!encabezado.isEmpty())){
+            this.fecha = fechaValida(fecha);
             this.cuerpo = cuerpo;
             this.encabezado = encabezado;
         } else throw new IllegalArgumentException("La fecha ingresada no es válida.");
     }
 
-    private void CrearNotificacion(){
+    private void crearNotificacion(){
 
         TrayIcon trayIcon = new TrayIcon(new ImageIcon("src/main/java/model/icon.jpg").getImage());
         trayIcon.setToolTip(this.encabezado); //hay que agregar una imagen de icono, usé un placeholder haha
@@ -44,10 +44,10 @@ public class Notificacion {
         }
     }
 
-    public void LanzarNotificacion(){
+    public void lanzarNotificacion(){
         if (SystemTray.isSupported()){
             if (LocalDate.now().equals(this.fecha)){
-                CrearNotificacion();
+                crearNotificacion();
             } else {
                 System.out.println("Error, fecha no correspondiente.");
             }
