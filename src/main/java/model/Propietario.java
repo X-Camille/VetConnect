@@ -1,4 +1,4 @@
-package model;
+ackage model;
 import java.util.*;
 public class Propietario {
     // Atributos
