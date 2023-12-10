@@ -16,7 +16,7 @@ public class MascotaTest {
         String fechaNac = "2020-01-01";
 
         // Act
-        Mascota mascota = new Mascota(nombre, especie, raza, sexo, fechaNac);
+        Mascota mascota = new Mascota(nombre, especie, raza, sexo, LocalDate.parse(fechaNac));
 
         // Assert
         assertEquals(nombre, mascota.getNombreMascota());
@@ -29,7 +29,7 @@ public class MascotaTest {
     @Test
     public void testSetters() {
         // Arrange
-        Mascota mascota = new Mascota("Firulais", "Perro", "Labrador", "Macho", "2020-01-01");
+        Mascota mascota = new Mascota("Firulais", "Perro", "Labrador", "Macho", LocalDate.parse("2020-01-01"));
 
         // Act
         mascota.setNombreMascota("NuevoNombre");
@@ -49,7 +49,7 @@ public class MascotaTest {
     @Test
     public void testToString() {
         // Arrange
-        Mascota mascota = new Mascota("Firulais", "Perro", "Labrador", "Macho", "2020-01-01");
+        Mascota mascota = new Mascota("Firulais", "Perro", "Labrador", "Macho", LocalDate.parse("2020-01-01"));
 
         // Act
         String result = mascota.toString();

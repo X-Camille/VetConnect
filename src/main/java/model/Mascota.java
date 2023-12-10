@@ -8,12 +8,12 @@ public class Mascota {
     private String sexo;
     private LocalDate fechaNacMascota;
 
-    public Mascota(String nombre, String especie, String raza, String sexo, String fechaNac) {
+    public Mascota(String nombre, String especie, String raza, String sexo, LocalDate fechaNac) {
         this.nombreMascota = nombre;
         this.especie = especie;
         this.raza = raza;
         this.sexo = sexo;
-        this.fechaNacMascota = LocalDate.parse(fechaNac);
+        this.fechaNacMascota = fechaNac;
     }
     public String getNombreMascota() {
         return nombreMascota;

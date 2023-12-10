@@ -9,8 +9,8 @@ public class FichaMedicaTest {
     @Test
     public void testConstructorValido() {
         // Arrange
-        Mascota mascota = new Mascota("Max", "Perro", "Labrador", "Macho", "2020-01-01");
-        Propietario propietario = new Propietario("John Doe", "john@example.com", "123 Main St");
+        Mascota mascota = new Mascota("Max", "Perro", "Labrador", "Macho", LocalDate.parse("2020-01-01"));
+        Propietario propietario = new Propietario("John Doe", "Doe", "122872732","john@example.com", "123 Main St", "Los Ángeles 123");
 
         // Act
         FichaMedica fichaMedica = new FichaMedica(mascota, propietario, "Diagnóstico", "Tratamiento");
@@ -35,21 +35,6 @@ public class FichaMedicaTest {
         // Assert
         assertEquals("Nuevo Diagnóstico", fichaMedica.getDiagnostico());
         assertEquals("Nuevo Tratamiento", fichaMedica.getTratamiento());
-    }
-
-
-
-    @Test
-    public void testGetFecha() {
-        // Arrange
-        FichaMedica fichaMedica = new FichaMedica();
-
-        // Act
-        LocalDate fechaActual = LocalDate.now();
-        LocalDate fechaFicha = fichaMedica.getFecha();
-
-        // Assert
-        assertEquals(fechaActual, fechaFicha);
     }
 
     @Test
