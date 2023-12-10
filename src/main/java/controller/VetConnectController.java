@@ -9,7 +9,6 @@ import model.Propietario;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class VetConnectController {
     private Mascota mascota;
@@ -69,7 +68,7 @@ public class VetConnectController {
         if(comprobarSiCamposVacios(datos) || !cadenasValidasPropietario(datos)){
            return false;
         } else {
-            propietario = new Propietario(datos[0], datos[1], datos[2], datos[3], datos[4], datos[5]);
+            propietario = new Propietario(datos[0], datos[1], datos[2]);
             if(propietario.validarRut(datos[2])){
                 return true;
             } else {
