@@ -93,8 +93,40 @@ public class Propietario {
 
         return true; // RUT válido
     }
-
+    public static boolean validarCorreo(String correo) {
+        // Verificar si el correo no está vacío y contiene al menos un "@" y un "."
+        return correo != null && !correo.isEmpty() && correo.contains("@") && correo.contains(".");
+    }
     public String toString(){
         return getNombre() + "/" + getApellido() + "/" + getRut() + "/" + getTelefono() + "/" + getCorreo() + "/" + getDireccion() + "/";
+    }
+    public static boolean validarTelefono(String telefono) {
+        // Verificar si el teléfono no es vacío ni null
+        if (telefono == null || telefono.isEmpty()) {
+            return false;
+        }
+
+        // Eliminar todos los espacios
+        telefono = telefono.replaceAll("\\s", "");
+
+        // Verificar si contiene al menos 5 y no más de 13 caracteres
+        if (telefono.length() < 5 || telefono.length() > 13) {
+            return false;
+        }
+
+        // Verificar que no sea un número negativo
+        if (telefono.startsWith("-")) {
+            return false;
+        }
+
+        // Verificar si todos los caracteres son números o el símbolo "+"
+        for (char caracter : telefono.toCharArray()) {
+            if (!Character.isDigit(caracter) && caracter != '+') {
+                return false;
+            }
+        }
+
+        // Si pasa todas las verificaciones, el teléfono es válido
+        return true;
     }
 }
