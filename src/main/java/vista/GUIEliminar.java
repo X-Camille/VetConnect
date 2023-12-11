@@ -144,7 +144,7 @@ public class GUIEliminar extends JFrame implements ActionListener {
     }
 
     private void establecerBotones(JPanel panelPrincipal) {
-        bEliminar = crearBoton("Eliminar Ficha Médica", new Color(176, 227, 227));
+        bEliminar = crearBoton("Eliminar Ficha", new Color(176, 227, 227));
         bAtras = crearBoton("Atrás", new Color(176, 227, 227));
         bVolver = crearBoton("Volver al Inicio", new Color(176, 227, 227));
         JPanel panelBotones = crearPanelBotones(bEliminar, bAtras, bVolver);

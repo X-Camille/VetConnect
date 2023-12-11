@@ -24,8 +24,6 @@ public class GestorDatos {
                     Propietario propietario = new Propietario(datos[5], datos[6], datos[7], datos[8], datos[9], datos[10]);
                     FichaMedica fichaMedica = new FichaMedica(mascota, propietario, datos[11], datos[12]);
                     datosFichaMedica.add(fichaMedica);
-                } else {
-                    System.out.println("Error al generar las fichas médicas.");
                 }
             }
             return datosFichaMedica;

@@ -61,7 +61,7 @@ public class GUIMascota extends JFrame implements ActionListener{
         panelPrincipal.add(panelRaza);
         JPanel panelSexo = crearPanelCampo("Sexo:", campoSexo);
         panelPrincipal.add(panelSexo);
-        JPanel panelFechaNacimiento = crearPanelCampo("Fecha nacimiento:", campoFechaNacimiento);
+        JPanel panelFechaNacimiento = crearPanelCampo("Fecha nacimiento (yyyy-MM-dd):", campoFechaNacimiento);
         panelPrincipal.add(panelFechaNacimiento);
     }
 
@@ -157,7 +157,7 @@ public class GUIMascota extends JFrame implements ActionListener{
             dispose();
             new GUIPropietario(clinica, controller).mostrarInterfaz();
         } else {
-            JOptionPane.showMessageDialog(this, "Los campos no pueden estar en blanco ni deben contener números.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Datos no válidos. Los campos no deben estar en campo, y la fecha debe estar en el formato establecido.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 

@@ -81,7 +81,7 @@ public class GUIDescripcion extends JFrame implements ActionListener {
         if(controller.getFichaEditada() != null){
             bIngresarFicha = crearBoton("Guardar Cambios", new Color(176, 227, 227));
         } else {
-            bIngresarFicha = crearBoton("Ingresar Ficha Médica", new Color(176, 227, 227));
+            bIngresarFicha = crearBoton("Ingresar Ficha", new Color(176, 227, 227));
         }
         bAtras = crearBoton("Atrás", new Color(176, 227, 227));
         bVolver = crearBoton("Volver al Inicio", new Color(176, 227, 227));
@@ -115,8 +115,17 @@ public class GUIDescripcion extends JFrame implements ActionListener {
     }
 
     private String[] obtenerDatosFichaMedica() {
-        String diagnosticoText = campoDiagnostico.getText();
-        String tratamientoText = campoTratamiento.getText();
+        String diagnosticoText, tratamientoText;
+        if(campoDiagnostico.getText().isEmpty()) {
+            diagnosticoText = "Sin definir.";
+        } else {
+            diagnosticoText = campoDiagnostico.getText();
+        }
+        if(campoTratamiento.getText().isEmpty()){
+            tratamientoText = "Sin definir.";
+        } else {
+            tratamientoText = campoTratamiento.getText();
+        }
         return new String[]{diagnosticoText, tratamientoText};
     }
 

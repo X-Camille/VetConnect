@@ -40,13 +40,17 @@ public class GUINotificacion extends JFrame implements ActionListener {
 
         add(panelPrincipal);
 
+        // Configuración del tamaño y visibilidad
         setVisible(true);
         setResizable(false);
         setSize(360, 400);
+
+        // Centrar la ventana en la pantalla
+        setLocationRelativeTo(null);
     }
 
     private JPanel crearPanelPrincipal() {
-        JPanel panelPrincipal = new JPanel();
+        JPanel panelPrincipal = new JPanel(new FlowLayout());
         panelPrincipal.setLayout(new BoxLayout(panelPrincipal, BoxLayout.Y_AXIS));
         return panelPrincipal;
     }

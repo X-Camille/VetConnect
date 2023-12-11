@@ -25,7 +25,6 @@ public class GUIBuscador extends JFrame implements ActionListener {
     private JPanel panelPrincipal;
     private JButton bBuscar;
     private JButton bVer;
-    private JButton bAtras;
     private JButton bVolver;
     private ArrayList<FichaMedica> fichasMedicasEncontradas = new ArrayList<>();
 
@@ -145,9 +144,8 @@ public class GUIBuscador extends JFrame implements ActionListener {
 
     private void establecerBotones(JPanel panelPrincipal) {
         bVer = crearBoton("Ver Ficha Médica", new Color(176, 227, 227));
-        bAtras = crearBoton("Atrás", new Color(176, 227, 227));
         bVolver = crearBoton("Volver al Inicio", new Color(176, 227, 227));
-        JPanel panelBotones = crearPanelBotones(bVer, bAtras, bVolver);
+        JPanel panelBotones = crearPanelBotones(bVer, bVolver);
         panelPrincipal.add(panelBotones);
     }
 
@@ -162,11 +160,7 @@ public class GUIBuscador extends JFrame implements ActionListener {
     }
 
     public boolean comprobarSiCamposVacios() {
-        boolean camposVacios = false;
-
-        if (campoNombrePropietario.isEnabled() && campoNombrePropietario.getText().isEmpty()) {
-            camposVacios = true;
-        }
+        boolean camposVacios = campoNombrePropietario.isEnabled() && campoNombrePropietario.getText().isEmpty();
         if (campoNombreMascota.isEnabled() && campoNombreMascota.getText().isEmpty()) {
             camposVacios = true;
         }
@@ -179,10 +173,9 @@ public class GUIBuscador extends JFrame implements ActionListener {
         return camposVacios;
     }
 
-    private JPanel crearPanelBotones(JButton siguienteButton, JButton atrasButton, JButton bVolver) {
+    private JPanel crearPanelBotones(JButton siguienteButton, JButton bVolver) {
         JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER));
         panelBotones.add(siguienteButton);
-        panelBotones.add(atrasButton);
         panelBotones.add(bVolver);
         return panelBotones;
     }
@@ -221,8 +214,6 @@ public class GUIBuscador extends JFrame implements ActionListener {
             realizarBusqueda();
         } else if (e.getSource() == bVer) {
             verFichaMedica();
-        } else if (e.getSource() == bAtras) {
-            volverAtras();
         } else if (e.getSource() == bVolver) {
             volverAVetConnect();
         }

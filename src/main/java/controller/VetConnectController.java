@@ -39,11 +39,21 @@ public class VetConnectController {
 
     public final GestorDatos gestorDatos = new GestorDatos();
     public boolean validarEntradasMascotas(String[] datos) {
-        if(comprobarSiCamposVacios(datos) || !cadenasValidasMascotas(datos)){
+        if(comprobarSiCamposVacios(datos) || !cadenasValidasMascotas(datos) || !manejoExcepcionFechaValida(datos[4])){
             return false;
         } else {
             mascota = new Mascota(datos[0], datos[1], datos[2], datos[3], LocalDate.parse(datos[4]));
             return true;
+        }
+    }
+
+    public boolean manejoExcepcionFechaValida(String cadenaFecha){
+        try {
+            LocalDate fecha = LocalDate.parse(cadenaFecha);
+            return true;
+        } catch (Exception e) {
+            System.err.println("Formato de fecha no válido.");
+            return false;
         }
     }
     public boolean comprobarSiCamposVacios(String[] datos) {
