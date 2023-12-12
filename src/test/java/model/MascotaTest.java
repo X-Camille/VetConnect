@@ -55,6 +55,6 @@ public class MascotaTest {
         String result = mascota.toString();
 
         // Assert
-        assertEquals("Firulais/Perro/Labrador/Macho/2020-01-01/", result);
+        assertEquals("Firulais|Perro|Labrador|Macho|2020-01-01|", result);
     }
 }
