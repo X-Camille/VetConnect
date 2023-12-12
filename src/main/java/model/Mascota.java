@@ -46,7 +46,7 @@ public class Mascota {
         this.fechaNacMascota = fechaNacMascota;
     }
     public String toString(){
-        return getNombreMascota() + "/" + getEspecieMascota() + "/" + getRazaMascota() + "/" + getSexoMascota() + "/" + getFechaNacMascota() + "/";
+        return getNombreMascota() + "|" + getEspecieMascota() + "|" + getRazaMascota() + "|" + getSexoMascota() + "|" + getFechaNacMascota() + "|";
     }
 
 }

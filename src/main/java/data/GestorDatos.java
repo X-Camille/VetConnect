@@ -18,7 +18,7 @@ public class GestorDatos {
         try (BufferedReader br = new BufferedReader(new FileReader(direccionArchivo))) {
             String linea;
             while ((linea = br.readLine()) != null) {
-                String[] datos = linea.split("/");
+                String[] datos = linea.split("\\|");
                 if (datos.length == 13) {
                     Mascota mascota = new Mascota(datos[0], datos[1], datos[2], datos[3], LocalDate.parse(datos[4]));
                     Propietario propietario = new Propietario(datos[5], datos[6], datos[7], datos[8], datos[9], datos[10]);

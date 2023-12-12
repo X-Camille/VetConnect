@@ -95,10 +95,10 @@ public class Propietario {
     }
     public boolean validarCorreo(String correo) {
         // Verificar si el correo no está vacío y contiene al menos un "@" y un "."
-        return correo != null && !correo.isEmpty() && correo.contains("@") && correo.contains(".");
+        return correo != null && correo.contains("@") && correo.contains(".");
     }
     public String toString(){
-        return getNombre() + "/" + getApellido() + "/" + getRut() + "/" + getTelefono() + "/" + getCorreo() + "/" + getDireccion() + "/";
+        return getNombre() + "|" + getApellido() + "|" + getRut() + "|" + getTelefono() + "|" + getCorreo() + "|" + getDireccion() + "|";
     }
     public boolean validarTelefono(String telefono) {
         // Verificar si el teléfono no es vacío ni null

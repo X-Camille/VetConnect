@@ -79,7 +79,7 @@ public class VetConnectController {
            return false;
         } else {
             propietario = new Propietario(datos[0], datos[1], datos[2], datos[3], datos[4], datos[5]);
-            if(propietario.validarRut(datos[2])){
+            if(propietario.validarRut(datos[2]) && propietario.validarTelefono(datos[3]) && propietario.validarCorreo(datos[4])){
                 return true;
             } else {
                 propietario = null;
@@ -93,11 +93,14 @@ public class VetConnectController {
     }
 
 
-    public void validarEntradasDescripcion(String[] datos){
-        if(true == true){
-            diagnostico = datos[0];
-            tratamiento = datos[1];
+    public boolean validarEntradasDescripcion(String[] datos){
+        if (!datos[0].contains("|") && !datos[1].contains("|")) {
+            // Los datos son válidos si no contienen el carácter '|'
+            this.diagnostico = datos[0];
+            this.tratamiento = datos[1];
+            return true;
         }
+        return false;
     }
 
     public void enviarDatos(){

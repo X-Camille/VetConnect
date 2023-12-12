@@ -36,10 +36,6 @@ public class FichaMedica {
         return tratamiento;
     }
 
-    public String toString(){
-        return getMascota().toString() + getPropietario().toString() + getDiagnostico() + "/" + getTratamiento() + "/";
-    }
-
     public void setDiagnostico(String diagnóstico) {
         this.diagnostico = diagnóstico;
     }
@@ -47,4 +43,8 @@ public class FichaMedica {
     public void setTratamiento(String tratamiento){
         this.tratamiento = tratamiento;
     }
+    public String toString(){
+        return getMascota().toString() + getPropietario().toString() + getDiagnostico() + "|" + getTratamiento() + "|";
+    }
 }
+

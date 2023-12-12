@@ -140,15 +140,18 @@ public class GUIDescripcion extends JFrame implements ActionListener {
     }
 
     private void procesarIngresoFicha() {
-        controller.validarEntradasDescripcion(obtenerDatosFichaMedica());
-        controller.enviarDatos();
-        if (controller.getFichaEditada() != null){
-            JOptionPane.showMessageDialog(this, "Se han guardado los cambios.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        if(controller.validarEntradasDescripcion(obtenerDatosFichaMedica())){
+            controller.enviarDatos();
+            if (controller.getFichaEditada() != null){
+                JOptionPane.showMessageDialog(this, "Se han guardado los cambios.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "La ficha médica ha sido agregada con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            }
+            dispose();
+            new GUIVetConnect(clinica).mostrarInterfaz();
         } else {
-            JOptionPane.showMessageDialog(this, "La ficha médica ha sido agregada con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "La descripción no puede contener el caracter |.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        dispose();
-        new GUIVetConnect(clinica).mostrarInterfaz();
     }
 
     private void volverAtras() {
